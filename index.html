@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recruitment Process Graphs</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body><table>
+<tr>
+   <td> <canvas id="barChart"></canvas> </td>
+    <td><span> <canvas id="pieChart"></canvas></td>
+     <td><canvas id="funnelChart"></canvas> </td>
+</tr></table>
+    <script>
+      // Dummy data for bar chart
+      var barData = {
+        labels: ["Applications", "Screened", "Interviewed", "Hired"],
+        datasets: [
+          {
+            label: "Recruitment Process",
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+            ],
+            borderWidth: 1,
+            data: [120, 80, 40, 20],
+          },
+        ],
+      };
+
+      // Dummy data for pie chart
+      var pieData = {
+        labels: ["Applications", "Screened", "Interviewed", "Hired"],
+        datasets: [
+          {
+            data: [120, 80, 40, 20],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
+
+     // Create bar chart
+      var barChart = new Chart(document.getElementById("barChart"), {
+        type: "bar",
+        data: barData,
+        options: {
+          responsive: true,
+          legend: {
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "Recruitment Process",
+          },
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
+        },
+      });
+
+  // Create pie chart
+      var pieChart = new Chart(document.getElementById("pieChart"), {
+        type: "pie",
+        data: pieData,
+        options: {
+          responsive: true,
+          legend: {
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "Recruitment Process",
+          },
+        },
+      });
+  // Dummy data for funnel chart
+      var funnelData = {
+        labels: ["Applications", "Screened", "Interviewed", "Hired"],
+        datasets: [
+          {
+            label: "Recruitment Process",
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+            ],
+            borderWidth: 1,
+            data: [120, 80, 40, 20],
+          },
+        ],
+      };
+
+      // Create funnel chart
+      var funnelChart = new Chart(document.getElementById("funnelChart"), {
+        type: "funnel",
+        data: funnelData,
+        options: {
+          responsive: true,
+          legend: {
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "Recruitment Process",
+          },
+          plugins: {
+            datalabels: {
+              formatter: function (value, context) {
+                return context.chart.data.labels[context.dataIndex];
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
